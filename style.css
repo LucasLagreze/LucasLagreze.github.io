@@ -58,7 +58,7 @@ nav, article, aside, footer {
 
 nav {
   height: 50px;
-  background-color: #7acf1a;
+  background-color: #c3c8be;
   display: flex;
   margin-bottom: 10px;
 }
@@ -142,7 +142,7 @@ article {
 aside {
   flex: 1;
   margin-left: 10px;
-  background-color: #7acf1a;
+  background-color: #c3c8be;
 }
 @media (max-width: 700px) {
   aside{
