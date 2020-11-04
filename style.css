@@ -144,11 +144,6 @@ aside {
   margin-left: 10px;
   background-color: #c3c8be;
 }
-@media (max-width: 700px) {
-  aside{
-    display :none;
-  }
-}
 
 aside li {
   padding-bottom: 10px;
@@ -156,4 +151,33 @@ aside li {
 
 footer {
   margin-top: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 800px){
+	main{
+		display: block;
+	}
+
+	body {
+		width: 100%;
+	}
+
+	nav {
+		height: 100%;
+	}
+
+	nav ul {
+		display:block;
+	}
+
+	nav li{
+		display: block;
+		margin-bottom:15px;
+	}
+
+	aside{
+		margin:0;
+		margin-top: 10px;
+	}
 }
