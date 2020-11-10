@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<title>Tp1</title>
+	<meta charset="utf-8">
+</head>
+<body onload="debut()">
+  <div id="idAff" class="affichage"></div>
+  <button onclick="debut()">Recommencer</button>
+  <script>
+  var compteur = 10;
+  var intervalle;
+
+  function fin() {
+    clearInterval(intervalle);
+    document.getElementById("idAff").innerHTML = "0";
+  }
+
+  function moins() {
+      compteur--;
+      if(compteur == 0) fin();
+      else {
+          document.getElementById("idAff").innerHTML = compteur;
+      }
+  }
+
+  function debut(){
+    compteur = 10;
+    clearInterval(intervalle);
+    intervalle = setInterval(moins, 1000);
+  }
+  </script>
+</body>
+</html>
