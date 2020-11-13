@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TP2</title>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+      <canvas id='carre' width="1349" height="1000"></canvas>
+        <script>
+          const taille = 120;
+          var compteur = [0, 0, 0];
+          var compteur1 = 0;
+          var compteur2 = 0;
+          var compteur3 = 0;
+          var intervalle = null;
+          var temp1 = 0;
+          var temp2 = 0;
+          var temp3 = 0;
+          var k = 0;
+          let count = 0;
+          let sec = null;
+          let canvas = document.getElementById('carre');
+          let ctx1 = canvas.getContext('2d');
+          let ctx2 = canvas.getContext('2d');
+          let ctx3 = canvas.getContext('2d');
+
+          function deplaceCarre() {
+            if (count>=4){
+              if (temp1 < taille){
+                compteur1++;
+                if (compteur1==taille){
+                  temp1=compteur1;
+                }
+              } else {
+                compteur1--;
+                if (compteur1==1){
+                  temp1=compteur1;
+                }
+              }
+              ctx1.clearRect(0, 0, compteur1*100, compteur1*100);
+              ctx1.fillRect(compteur1*10, 0, 100, 100);
+              ctx2.fillRect(0, 120, 100, 100);
+              ctx3.fillRect(0, 240, 100, 100);
+
+              if (count>=5){
+                if (temp2 < taille){
+                  compteur2++;
+                  if (compteur2==taille){
+                    temp2=compteur2;
+                  }
+                } else {
+                  compteur2--;
+                  if (compteur2==1){
+                    temp2=compteur2;
+                  }
+              }
+              ctx2.clearRect(0, 120, compteur2*100, compteur2*100);
+              ctx2.fillRect(compteur2*10, 120, 100, 100);
+              ctx3.fillRect(0, 240, 100, 100);
+              }
+
+              if (count>=6){
+                if (temp3 < taille){
+                  compteur3++;
+                  if (compteur3==taille){
+                    temp3=compteur3;
+                  }
+                } else {
+                  compteur3--;
+                  if (compteur3==1){
+                    temp3=compteur3;
+                  }
+              }
+              ctx2.clearRect(0, 240, compteur3*100, compteur3*100);
+              ctx2.fillRect(compteur3*10, 240, 100, 100);
+              }
+            }
+          }
+
+          function debut(){
+            while(k<3){
+              afficheCarre(k);
+              k++;
+            }
+            sec = setInterval(function(){count++;}, 1000);
+            intervalle = setInterval(deplaceCarre, 10);
+          }
+
+          function afficheCarre(k){
+            switch(k){
+              case 0:
+              ctx1.fillStyle = '#f43c0e';
+              ctx1.fillRect(0, 0, 100, 100);
+                break;
+              case 1:
+              ctx2.fillStyle = '#f43c0e';
+              ctx2.fillRect(0, 120, 100, 100);
+                break;
+              case 2:
+              ctx3.fillStyle = '#f43c0e';
+              ctx3.fillRect(0, 240, 100, 100);
+                break;
+            }
+          }
+          window.onload=debut();
+        </script>
+    </body>
+</html>
