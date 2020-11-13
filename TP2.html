@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TP2</title>
+        <meta charset='utf-8'>
+    </head>
+    <body onload="debut()">
+      <canvas id='carre' width="1349" height="100"></canvas>
+        <script>
+          const taille = 120;
+          var compteur = 0;
+          var intervalle = null;
+          var i = 0;
+          let canvas = document.getElementById('carre');
+          let ctx = canvas.getContext('2d');
+
+          function deplaceCarre() {
+            if (i < taille){
+              compteur++;
+              if (compteur==taille){
+                i=compteur;
+              }
+            } else {
+              compteur--;
+              if (compteur==1){
+                i=compteur;
+              }
+            }
+            ctx.clearRect(0, 0, compteur*100, compteur*100);
+            ctx.fillRect(compteur*10, 0, 100, 100);
+          }
+
+          function debut(){
+            afficheCarre();
+            intervalle = setInterval(deplaceCarre, 10);
+          }
+
+          function afficheCarre(){
+            ctx.fillStyle = '#f43c0e';
+            ctx.fillRect(0, 0, 100, 100);
+          }
+        </script>
+    </body>
+</html>
