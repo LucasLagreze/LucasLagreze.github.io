@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TP6</title>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+      <button id="0ms" onclick="debut(0)" >Déplacer avec 0ms</button>
+      <button id="33ms" onclick="debut(33)" >Déplacer avec 33ms</button>
+      <button id="100ms" onclick="debut(100)" >Déplacer avec 100ms</button>
+      <canvas id='canvas' width="1349" height="300"></canvas>
+        <script>
+          let canvas = document.getElementById("canvas");
+          let ctx = canvas.getContext("2d");
+          let x = 10, y = 20, w = 100, h = 100, i=0;
+          let intervalle;
+
+          function move(pause = i){
+            ctx.clearRect(x, y, w, h);
+            x += 10;
+            ctx.fillRect(x, y, w, h);
+            if (x + w >= canvas.width - 10) clearInterval(intervalle);
+            pauseMove(pause);
+          }
+
+          function pauseMove(mill){
+            var date = new Date();
+            var curDate = null;
+            do {
+              curDate = new Date();
+            } while (curDate-date < mill)
+          }
+
+          function reset (){
+            clearInterval(intervalle);
+            ctx.clearRect(x, y, w, h);
+            x = 10;
+            y = 10;
+            ctx.fillRect(x, y, w, h);
+          }
+
+          function debut(pause){
+            afficheCarre();
+            reset();
+            i=pause;
+            intervalle = setInterval(move, 10);
+          }
+
+          function afficheCarre(){
+            ctx.fillStyle = '#f43c0e';
+            ctx.fillRect(x, y, w, h);
+          }
+        </script>
+    </body>
+</html>
