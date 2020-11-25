@@ -18,16 +18,16 @@
 
                   class Sprites
                   {
-                      constructor(width, height, originOffsetX, originOffsetY, spriteRowNumber, nbrSprites, taille, animationSpeed, srcPath, ctx)
+                      constructor(width, height, offsetX, offsetY, spriteRowNbr, nbrSprites, taille, animationSpeed, srcPath, ctx)
                       {
                           this.ctx = ctx;
 
                           this.width = width;
                           this.height = height;
 
-                          this.originOffsetX = originOffsetX;
-                          this.originOffsetY = originOffsetY;
-                          this.spriteRowNumber = spriteRowNumber;
+                          this.offsetX = offsetX;
+                          this.offsetY = offsetY;
+                          this.spriteRowNbr = spriteRowNbr;
 
                           this.scale = taille;
                           this.spriteNumber = nbrSprites;
@@ -41,8 +41,8 @@
                       {
                           ctx.drawImage(
                               this.sprites,
-                              this.width * animationStep, this.height * this.spriteRowNumber, this.width, this.height,
-                              x - this.originOffsetX * scale, y - this.originOffsetY * scale, this.width * scale, this.height * scale);
+                              this.width * animationStep, this.height * this.spriteRowNbr, this.width, this.height,
+                              x - this.offsetX * scale, y - this.offsetY * scale, this.width * scale, this.height * scale);
                       }
                   }
 
