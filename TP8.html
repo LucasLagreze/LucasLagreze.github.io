@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Service worker</title>
+        <title>Services workers</title>
         <meta charset='utf-8'>
     </head>
     <body>
-        <div>Services worker</div>
+        <div>Services workers</div>
         <div class="col cal">
             <pre>
                 <code id="calendar">
@@ -13,40 +13,18 @@
                 </code>
             </pre>
         </div>
-        
-        <script src="fullcalendar/main.min.js"></script>
-        
+
         <script>
-        const noCorsUrl = 'https://cors-anywhere.herokuapp.com/';
+        const corsUrl = 'https://cors-anywhere.herokuapp.com/';
 
         let calUrl = 'https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/9EYlGR3a.shu';
 
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/tps/JS_SW/sw.js', { scope: '/tps/JS_SW/' }).then((reg) => {
-                // registration worked
-                console.log('Registration succeeded. Scope is ' + reg.scope);
-            }).catch((error) => {
-                // registration failed
-                console.log('Registration failed with ' + error);
-            });
-        };
-
-        fetch(noCorsUrl + calUrl, {method: 'GET'})
-            .then((resp) => {
-                return resp.text();
+        fetch(corsUrl + calUrl, {method: 'GET'})
+            .then((response) => {
+                return response.text();
             })
             .then((text) => {
                 document.querySelector('#calendar').innerHTML = text;
-
-                /*
-                var calendarEl = document.getElementById('calendar');
-
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth'
-                });
-
-                calendar.render();
-                */
             });
         </script>
     </body>
