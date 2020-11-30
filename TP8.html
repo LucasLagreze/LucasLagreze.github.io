@@ -19,13 +19,13 @@
 
         let calUrl = 'https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/9EYlGR3a.shu';
 
-        fetch(corsUrl + calUrl, {method: 'GET'})
-            .then((response) => {
-                return response.text();
+        fetch(corsUrl + calUrl)
+            .then( response => {
+                response.text()
+            .then( data => {
+                  document.querySelector('#calendar').innerHTML = data;
+                })
             })
-            .then((text) => {
-                document.querySelector('#calendar').innerHTML = text;
-            });
         </script>
     </body>
 </html>
